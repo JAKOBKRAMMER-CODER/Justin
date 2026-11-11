@@ -22,27 +22,45 @@
   body {
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     background: var(--bg); color: var(--text);
-    display: flex; flex-direction: column;
   }
-  .app { flex: 1; display: flex; min-height: 0; }
 
-  /* Seitenleiste */
+  /* Anmeldung */
+  #login {
+    height: 100%; display: flex; align-items: center; justify-content: center;
+  }
+  #login form {
+    background: var(--panel); border: 1px solid var(--rand); border-radius: 16px;
+    padding: 32px; width: min(340px, 90vw); text-align: center;
+  }
+  #login h1 { margin: 0 0 6px; font-size: 1.3rem; }
+  #login p { color: var(--muted); margin: 0 0 20px; font-size: 0.9rem; }
+  #login input {
+    width: 100%; padding: 12px; font-size: 1.4rem; letter-spacing: 0.4em; text-align: center;
+    border-radius: 10px; border: 1px solid var(--rand); background: var(--bg); color: var(--text);
+  }
+  #login button {
+    margin-top: 16px; width: 100%; padding: 12px; border: none; border-radius: 10px;
+    background: var(--akzent); color: var(--akzent-text); font-weight: 600; cursor: pointer;
+  }
+  #loginFehler { color: var(--rot); margin-top: 14px; font-size: 0.9rem; min-height: 1.2em; }
+
+  /* App */
+  #app { display: none; height: 100%; }
+  .layout { height: 100%; display: flex; }
   aside {
-    width: 270px; flex-shrink: 0;
-    background: var(--panel); border-right: 1px solid var(--rand);
-    display: flex; flex-direction: column; min-height: 0;
+    width: 270px; flex-shrink: 0; background: var(--panel);
+    border-right: 1px solid var(--rand); display: flex; flex-direction: column;
   }
   aside .kopf { padding: 14px; border-bottom: 1px solid var(--rand); }
   .neu-knopf {
     width: 100%; padding: 10px; border: none; border-radius: 10px;
-    background: var(--akzent); color: var(--akzent-text);
-    font-weight: 600; cursor: pointer;
+    background: var(--akzent); color: var(--akzent-text); font-weight: 600; cursor: pointer;
   }
   #liste { flex: 1; overflow-y: auto; padding: 8px; }
   .leerhinweis { color: var(--muted); font-size: 0.85rem; padding: 12px; text-align: center; }
   .eintrag {
-    display: flex; align-items: center; gap: 6px;
-    padding: 9px 10px; border-radius: 8px; cursor: pointer; margin-bottom: 2px;
+    display: flex; align-items: center; gap: 6px; padding: 9px 10px;
+    border-radius: 8px; cursor: pointer; margin-bottom: 2px;
   }
   .eintrag:hover { background: var(--bg); }
   .eintrag.aktiv { background: var(--du); }
@@ -57,12 +75,10 @@
   .eintrag:hover .weg, .eintrag.aktiv .weg { opacity: 1; }
   .weg:hover { color: var(--rot); }
 
-  /* Hauptbereich */
   .haupt { flex: 1; display: flex; flex-direction: column; min-width: 0; }
   header {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 14px 20px; background: var(--panel);
-    border-bottom: 1px solid var(--rand); gap: 10px;
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    padding: 14px 20px; background: var(--panel); border-bottom: 1px solid var(--rand);
   }
   .titel { display: flex; align-items: center; gap: 10px; }
   .titel h1 { font-size: 1.05rem; margin: 0; font-weight: 600; }
@@ -72,25 +88,20 @@
   .punkt.fehler { background: var(--rot); }
   .rechts { display: flex; gap: 8px; }
   .knopf-klein {
-    background: transparent; color: var(--muted);
-    border: 1px solid var(--rand); padding: 6px 12px;
-    border-radius: 8px; cursor: pointer; font-size: 0.85rem;
-    text-decoration: none; display: inline-block;
+    background: transparent; color: var(--muted); border: 1px solid var(--rand);
+    padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 0.85rem;
   }
   .knopf-klein:hover { color: var(--text); border-color: var(--muted); }
-  .knopf-klein:disabled { opacity: 0.5; cursor: default; }
   .menue { display: none; }
 
   #chat { flex: 1; min-height: 0; overflow-y: auto; padding: 24px 16px; }
   .inhalt { max-width: 760px; margin: 0 auto; }
-
   #leer { text-align: center; margin-top: 12vh; color: var(--muted); }
   #leer h2 { color: var(--text); font-weight: 600; margin-bottom: 6px; }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 18px; }
   .chip {
-    background: var(--panel); color: var(--text);
-    border: 1px solid var(--rand); padding: 8px 14px;
-    border-radius: 999px; cursor: pointer; font-size: 0.9rem;
+    background: var(--panel); color: var(--text); border: 1px solid var(--rand);
+    padding: 8px 14px; border-radius: 999px; cursor: pointer; font-size: 0.9rem;
   }
   .chip:hover { border-color: var(--akzent); }
 
@@ -99,8 +110,7 @@
   .avatar {
     width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
-    font-size: 0.75rem; font-weight: 700;
-    background: var(--akzent); color: var(--akzent-text);
+    font-size: 0.75rem; font-weight: 700; background: var(--akzent); color: var(--akzent-text);
   }
   .zeile.du .avatar { background: var(--rand); color: var(--text); }
   .blase {
@@ -109,7 +119,6 @@
     white-space: pre-wrap; word-wrap: break-word; line-height: 1.5;
   }
   .zeile.du .blase { background: var(--du); border-color: transparent; }
-
   .tippt { display: flex; gap: 4px; padding: 4px 2px; }
   .tippt span {
     width: 7px; height: 7px; border-radius: 50%; background: var(--muted);
@@ -123,23 +132,20 @@
   }
 
   footer { background: var(--panel); border-top: 1px solid var(--rand); padding: 12px 16px 16px; }
-  form { max-width: 760px; margin: 0 auto; display: flex; gap: 10px; align-items: flex-end; }
+  form.eingabe { max-width: 760px; margin: 0 auto; display: flex; gap: 10px; align-items: flex-end; }
   textarea {
-    flex: 1; resize: none; min-height: 46px; max-height: 160px;
-    padding: 12px 14px; border-radius: 12px;
-    border: 1px solid var(--rand); background: var(--bg); color: var(--text);
+    flex: 1; resize: none; min-height: 46px; max-height: 160px; padding: 12px 14px;
+    border-radius: 12px; border: 1px solid var(--rand); background: var(--bg); color: var(--text);
     font: inherit; line-height: 1.4; outline: none;
   }
   textarea:focus { border-color: var(--akzent); }
   #senden {
     height: 46px; padding: 0 20px; border: none; border-radius: 12px;
-    background: var(--akzent); color: var(--akzent-text);
-    font-weight: 600; cursor: pointer;
+    background: var(--akzent); color: var(--akzent-text); font-weight: 600; cursor: pointer;
   }
   #senden:disabled { opacity: 0.45; cursor: default; }
   .hinweis { text-align: center; font-size: 0.75rem; color: var(--muted); margin-top: 8px; }
 
-  /* Mobil: Seitenleiste als ausklappbares Menü */
   @media (max-width: 700px) {
     .menue { display: inline-block; }
     aside {
@@ -148,143 +154,189 @@
     }
     aside.offen { left: 0; box-shadow: 4px 0 20px rgba(0,0,0,0.3); }
     .blase { max-width: 88%; }
-    .status span.text { display: none; }
+    .status .text { display: none; }
   }
 </style>
 </head>
 <body>
-<div class="app">
-  <aside id="seitenleiste">
-    <div class="kopf">
-      <button class="neu-knopf" id="neu" type="button">+ Neuer Chat</button>
-    </div>
-    <div id="liste"></div>
-  </aside>
 
-  <div class="haupt">
-    <header>
-      <div class="titel">
-        <button class="knopf-klein menue" id="menue" type="button">☰</button>
-        <h1>Justin</h1>
-        <span class="status" title="Verbindung zu Ollama">
-          <span class="punkt" id="punkt"></span><span class="text" id="statustext">prüfe ...</span>
-        </span>
-      </div>
-      <div class="rechts">
-        <button class="knopf-klein" id="vorlesen" type="button">🔊 Vorlesen: an</button>
-        <a class="knopf-klein" href="/logout">Abmelden</a>
-      </div>
-    </header>
+<!-- Anmeldung -->
+<div id="login">
+  <form id="loginFormular">
+    <h1>Justin</h1>
+    <p>Bitte PIN eingeben</p>
+    <input type="password" id="pin" inputmode="numeric" autocomplete="one-time-code" autofocus required>
+    <button type="submit">Anmelden</button>
+    <div id="loginFehler"></div>
+  </form>
+</div>
 
-    <main id="chat">
-      <div class="inhalt" id="inhalt">
-        <div id="leer">
-          <h2>Womit kann ich helfen?</h2>
-          <div>Schreib eine Nachricht oder wähle einen Vorschlag.</div>
-          <div class="chips">
-            <button class="chip" type="button" data-text="Erkläre mir Python-Listen mit einem Beispiel.">Python-Listen erklären</button>
-            <button class="chip" type="button" data-text="Gib mir drei Ideen für ein Wochenend-Projekt.">Projektideen</button>
-            <button class="chip" type="button" data-text="Schreib ein kurzes Gedicht über den Herbst.">Gedicht schreiben</button>
+<!-- Chat -->
+<div id="app">
+  <div class="layout">
+    <aside id="seitenleiste">
+      <div class="kopf">
+        <button class="neu-knopf" id="neu" type="button">+ Neuer Chat</button>
+      </div>
+      <div id="liste"></div>
+    </aside>
+
+    <div class="haupt">
+      <header>
+        <div class="titel">
+          <button class="knopf-klein menue" id="menue" type="button">☰</button>
+          <h1>Justin</h1>
+          <span class="status">
+            <span class="punkt" id="punkt"></span><span class="text" id="statustext">prüfe ...</span>
+          </span>
+        </div>
+        <div class="rechts">
+          <button class="knopf-klein" id="vorlesen" type="button">🔊 Vorlesen: an</button>
+          <button class="knopf-klein" id="abmelden" type="button">Abmelden</button>
+        </div>
+      </header>
+
+      <main id="chat">
+        <div class="inhalt" id="inhalt">
+          <div id="leer">
+            <h2>Womit kann ich helfen?</h2>
+            <div>Schreib eine Nachricht oder wähle einen Vorschlag.</div>
+            <div class="chips">
+              <button class="chip" type="button" data-text="Erkläre mir Python-Listen mit einem Beispiel.">Python-Listen erklären</button>
+              <button class="chip" type="button" data-text="Gib mir drei Ideen für ein Wochenend-Projekt.">Projektideen</button>
+              <button class="chip" type="button" data-text="Schreib ein kurzes Gedicht über den Herbst.">Gedicht schreiben</button>
+            </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
 
-    <footer>
-      <form id="formular">
-        <textarea id="eingabe" rows="1" placeholder="Nachricht schreiben ..." autofocus></textarea>
-        <button id="senden" type="submit">Senden</button>
-      </form>
-      <div class="hinweis">Enter zum Senden, Shift + Enter für eine neue Zeile</div>
-    </footer>
+      <footer>
+        <form class="eingabe" id="formular">
+          <textarea id="eingabe" rows="1" placeholder="Nachricht schreiben ..."></textarea>
+          <button id="senden" type="submit">Senden</button>
+        </form>
+        <div class="hinweis">Enter zum Senden, Shift + Enter für eine neue Zeile</div>
+      </footer>
+    </div>
   </div>
 </div>
 
 <script>
-const chat = document.getElementById("chat");
-const inhalt = document.getElementById("inhalt");
-const formular = document.getElementById("formular");
-const eingabe = document.getElementById("eingabe");
-const senden = document.getElementById("senden");
-const leer = document.getElementById("leer");
-const punkt = document.getElementById("punkt");
-const statustext = document.getElementById("statustext");
-const vorlesenKnopf = document.getElementById("vorlesen");
-const seitenleiste = document.getElementById("seitenleiste");
-const liste = document.getElementById("liste");
-const neuKnopf = document.getElementById("neu");
-const menueKnopf = document.getElementById("menue");
+// ---------- Einstellungen ----------
+const OLLAMA_URL = "http://localhost:11434";
+const MODELL = "llama3.2";
+const SYSTEM_PROMPT = "Du bist Justin, ein freundlicher Chatbot, der auf Deutsch antwortet.";
+const SALT = "justin";
+// SHA-256 von "justin" + PIN. Im Terminal erzeugen (siehe Anleitung), dann hier eintragen:
+const PIN_HASH = "HIER_HASH_EINFUEGEN";
+const SPEICHER_KEY = "justin-chats";
+
+// ---------- Elemente ----------
+const $ = (id) => document.getElementById(id);
+const loginDiv = $("login"), appDiv = $("app");
+const inhalt = $("inhalt"), leer = $("leer"), chatBereich = $("chat");
+const eingabe = $("eingabe"), senden = $("senden"), formular = $("formular");
+const punkt = $("punkt"), statustext = $("statustext");
+const liste = $("liste"), seitenleiste = $("seitenleiste");
+const vorlesenKnopf = $("vorlesen");
 
 let aktuelleId = null;
 
-// ---------- Anmeldung prüfen ----------
-function abgelaufen(r) {
-  if (r.status === 401) {
-    window.location.href = "/login";
-    return true;
-  }
-  return false;
+// ---------- Anmeldung ----------
+async function sha256(text) {
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, "0")).join("");
 }
 
-// ---------- Vorlesen (Browser-Sprachausgabe) ----------
-let vorlesenAktiv = true;
-const sprachAusgabeVorhanden = "speechSynthesis" in window;
+$("loginFormular").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const hash = await sha256(SALT + $("pin").value.trim());
+  if (hash === PIN_HASH) {
+    sessionStorage.setItem("eingeloggt", "1");
+    starten();
+  } else {
+    $("loginFehler").textContent = "Falsche PIN.";
+    $("pin").value = "";
+  }
+});
 
-if (!sprachAusgabeVorhanden) {
+$("abmelden").addEventListener("click", () => {
+  sessionStorage.removeItem("eingeloggt");
+  speechSynthesis.cancel();
+  location.reload();
+});
+
+function starten() {
+  loginDiv.style.display = "none";
+  appDiv.style.display = "block";
+  statusPruefen();
+  chatsZeichnen();
+  setInterval(statusPruefen, 30000);
+}
+
+// ---------- Speicher (localStorage) ----------
+function laden() {
+  try { return JSON.parse(localStorage.getItem(SPEICHER_KEY)) || {}; }
+  catch { return {}; }
+}
+function speichern(chats) {
+  localStorage.setItem(SPEICHER_KEY, JSON.stringify(chats));
+}
+
+// ---------- Status ----------
+async function statusPruefen() {
+  try {
+    const r = await fetch(OLLAMA_URL + "/api/tags");
+    punkt.className = "punkt " + (r.ok ? "ok" : "fehler");
+    statustext.textContent = r.ok ? "Ollama verbunden" : "Ollama nicht erreichbar";
+  } catch {
+    punkt.className = "punkt fehler";
+    statustext.textContent = "Ollama nicht erreichbar";
+  }
+}
+
+// ---------- Vorlesen ----------
+let vorlesenAktiv = true;
+const sprachAusgabe = "speechSynthesis" in window;
+if (!sprachAusgabe) {
   vorlesenKnopf.disabled = true;
   vorlesenKnopf.textContent = "Vorlesen nicht verfügbar";
 }
-
 function deutscheStimme() {
-  const stimmen = speechSynthesis.getVoices();
-  return stimmen.find(s => s.lang === "de-DE") ||
-         stimmen.find(s => s.lang.startsWith("de")) || null;
+  const s = speechSynthesis.getVoices();
+  return s.find(v => v.lang === "de-DE") || s.find(v => v.lang.startsWith("de")) || null;
 }
-
 function vorlesen(text) {
-  if (!sprachAusgabeVorhanden || !vorlesenAktiv || !text) return;
+  if (!sprachAusgabe || !vorlesenAktiv || !text) return;
   speechSynthesis.cancel();
   const satz = new SpeechSynthesisUtterance(text);
   satz.lang = "de-DE";
   const stimme = deutscheStimme();
   if (stimme) satz.voice = stimme;
-  satz.rate = 1;
   speechSynthesis.speak(satz);
 }
-
 vorlesenKnopf.addEventListener("click", () => {
   vorlesenAktiv = !vorlesenAktiv;
   vorlesenKnopf.textContent = vorlesenAktiv ? "🔊 Vorlesen: an" : "🔇 Vorlesen: aus";
   if (!vorlesenAktiv) speechSynthesis.cancel();
 });
 
-// ---------- Nachrichten anzeigen ----------
-function nachBeimScrollen() {
-  chat.scrollTop = chat.scrollHeight;
-}
+// ---------- Anzeige ----------
+function nachBeimScrollen() { chatBereich.scrollTop = chatBereich.scrollHeight; }
 
 function zeileHinzufuegen(rolle, text) {
   leer.style.display = "none";
   const zeile = document.createElement("div");
   zeile.className = "zeile " + (rolle === "du" ? "du" : "bot");
-
   const avatar = document.createElement("div");
   avatar.className = "avatar";
   avatar.textContent = rolle === "du" ? "Du" : "JU";
-
   const blase = document.createElement("div");
   blase.className = "blase";
   blase.textContent = text;   // textContent verhindert HTML-Injection
-
   zeile.append(avatar, blase);
   inhalt.appendChild(zeile);
   nachBeimScrollen();
-  return blase;
-}
-
-function tippenAnzeigen() {
-  const blase = zeileHinzufuegen("bot", "");
-  blase.innerHTML = '<div class="tippt"><span></span><span></span><span></span></div>';
   return blase;
 }
 
@@ -298,29 +350,19 @@ function eingabeAnpassen() {
 }
 
 // ---------- Seitenleiste ----------
-function seitenleisteSchliessen() {
-  seitenleiste.classList.remove("offen");
-}
+function chatsZeichnen() {
+  const chats = laden();
+  const sortiert = Object.entries(chats)
+    .sort((a, b) => b[1].erstellt.localeCompare(a[1].erstellt));
 
-async function chatsLaden() {
-  try {
-    const r = await fetch("/chats");
-    if (abgelaufen(r)) return;
-    listeZeichnen(await r.json());
-  } catch {
-    liste.innerHTML = '<div class="leerhinweis">Chats konnten nicht geladen werden.</div>';
-  }
-}
-
-function listeZeichnen(chats) {
   liste.innerHTML = "";
-  if (!chats.length) {
+  if (!sortiert.length) {
     liste.innerHTML = '<div class="leerhinweis">Noch keine Chats gespeichert.</div>';
     return;
   }
-  for (const c of chats) {
+  for (const [id, c] of sortiert) {
     const eintrag = document.createElement("div");
-    eintrag.className = "eintrag" + (c.id === aktuelleId ? " aktiv" : "");
+    eintrag.className = "eintrag" + (id === aktuelleId ? " aktiv" : "");
 
     const titel = document.createElement("span");
     titel.className = "eintrag-titel";
@@ -333,20 +375,18 @@ function listeZeichnen(chats) {
     weg.textContent = "✕";
     weg.addEventListener("click", (e) => {
       e.stopPropagation();
-      chatLoeschen(c.id, c.titel);
+      chatLoeschen(id, c.titel);
     });
 
-    eintrag.addEventListener("click", () => chatOeffnen(c.id));
+    eintrag.addEventListener("click", () => chatOeffnen(id));
     eintrag.append(titel, weg);
     liste.appendChild(eintrag);
   }
 }
 
-async function chatOeffnen(id) {
-  const r = await fetch(`/chats/${id}`);
-  if (abgelaufen(r) || !r.ok) return;
-  const chat = await r.json();
-
+function chatOeffnen(id) {
+  const chat = laden()[id];
+  if (!chat) return;
   aktuelleId = id;
   verlaufLeeren();
   speechSynthesis.cancel();
@@ -355,8 +395,8 @@ async function chatOeffnen(id) {
   }
   if (!chat.nachrichten.length) leer.style.display = "";
   nachBeimScrollen();
-  seitenleisteSchliessen();
-  chatsLaden();
+  seitenleiste.classList.remove("offen");
+  chatsZeichnen();
 }
 
 function neuerChat() {
@@ -364,63 +404,106 @@ function neuerChat() {
   verlaufLeeren();
   leer.style.display = "";
   speechSynthesis.cancel();
-  seitenleisteSchliessen();
-  chatsLaden();
+  seitenleiste.classList.remove("offen");
+  chatsZeichnen();
   eingabe.focus();
 }
 
-async function chatLoeschen(id, titel) {
+function chatLoeschen(id, titel) {
   if (!confirm(`Chat „${titel}“ wirklich löschen?`)) return;
-  await fetch(`/chats/${id}`, { method: "DELETE" });
+  const chats = laden();
+  delete chats[id];
+  speichern(chats);
   if (id === aktuelleId) neuerChat();
-  else chatsLaden();
+  else chatsZeichnen();
 }
 
-neuKnopf.addEventListener("click", neuerChat);
-menueKnopf.addEventListener("click", () => seitenleiste.classList.toggle("offen"));
+$("neu").addEventListener("click", neuerChat);
+$("menue").addEventListener("click", () => seitenleiste.classList.toggle("offen"));
 
 // ---------- Senden ----------
 async function nachrichtSenden(text) {
   senden.disabled = true;
   zeileHinzufuegen("du", text);
-  const blase = tippenAnzeigen();
+  const blase = zeileHinzufuegen("bot", "");
+  blase.innerHTML = '<div class="tippt"><span></span><span></span><span></span></div>';
 
+  // Chat anlegen, falls noch keiner offen ist
+  const chats = laden();
+  if (!aktuelleId) {
+    aktuelleId = crypto.randomUUID();
+    chats[aktuelleId] = {
+      titel: text.slice(0, 40) + (text.length > 40 ? "…" : ""),
+      erstellt: new Date().toISOString(),
+      nachrichten: []
+    };
+  }
+  const chat = chats[aktuelleId];
+  chat.nachrichten.push({ role: "user", content: text });
+  speichern(chats);
+
+  let antwort = "";
   try {
-    if (!aktuelleId) {
-      const r = await fetch("/chats", { method: "POST" });
-      if (abgelaufen(r)) throw new Error("Bitte neu anmelden");
-      if (!r.ok) throw new Error("Chat konnte nicht angelegt werden");
-      aktuelleId = (await r.json()).id;
-    }
-
-    const antwort = await fetch(`/chats/${aktuelleId}/chat`, {
+    const r = await fetch(OLLAMA_URL + "/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ nachricht: text })
+      body: JSON.stringify({
+        model: MODELL,
+        messages: [{ role: "system", content: SYSTEM_PROMPT }, ...chat.nachrichten],
+        stream: true
+      })
     });
-    if (abgelaufen(antwort)) throw new Error("Bitte neu anmelden");
-    if (!antwort.ok) throw new Error("HTTP " + antwort.status);
+    if (!r.ok) throw new Error("Ollama antwortet mit HTTP " + r.status);
 
-    const reader = antwort.body.getReader();
+    // Ollama liefert eine Zeile JSON pro Textstück
+    const reader = r.body.getReader();
     const decoder = new TextDecoder();
+    let puffer = "";
     let erster = true;
+
+    const verarbeiten = (zeile) => {
+      if (!zeile.trim()) return;
+      const teil = JSON.parse(zeile);
+      if (teil.message && teil.message.content) {
+        if (erster) { blase.textContent = ""; erster = false; }
+        antwort += teil.message.content;
+        blase.textContent = antwort;
+        nachBeimScrollen();
+      }
+    };
 
     while (true) {
       const { done, value } = await reader.read();
       if (done) break;
-      if (erster) { blase.textContent = ""; erster = false; }
-      blase.textContent += decoder.decode(value, { stream: true });
-      nachBeimScrollen();
+      puffer += decoder.decode(value, { stream: true });
+      const zeilen = puffer.split("\n");
+      puffer = zeilen.pop();           // unvollständige Zeile merken
+      zeilen.forEach(verarbeiten);
     }
+    verarbeiten(puffer);
 
-    vorlesen(blase.textContent);
+    vorlesen(antwort);
   } catch (err) {
-    blase.textContent = "Fehler: " + err.message;
+    const hinweis = err instanceof TypeError
+      ? "Ollama nicht erreichbar. Läuft Ollama, und ist OLLAMA_ORIGINS gesetzt?"
+      : err.message;
+    blase.textContent = "Fehler: " + hinweis;
     blase.style.color = "var(--rot)";
+    antwort = antwort || "";
   } finally {
+    if (antwort) {
+      chat.nachrichten.push({ role: "assistant", content: antwort });
+      const alle = laden();
+      alle[aktuelleId] = chat;
+      speichern(alle);
+    } else {
+      // Fehlgeschlagene Anfrage nicht im Verlauf lassen
+      chat.nachrichten.pop();
+      speichern(Object.assign(laden(), { [aktuelleId]: chat }));
+    }
     senden.disabled = false;
     eingabe.focus();
-    chatsLaden();
+    chatsZeichnen();
   }
 }
 
@@ -432,7 +515,6 @@ formular.addEventListener("submit", (e) => {
   eingabeAnpassen();
   nachrichtSenden(text);
 });
-
 eingabe.addEventListener("input", eingabeAnpassen);
 eingabe.addEventListener("keydown", (e) => {
   if (e.key === "Enter" && !e.shiftKey && !e.isComposing) {
@@ -440,28 +522,12 @@ eingabe.addEventListener("keydown", (e) => {
     formular.requestSubmit();
   }
 });
+document.querySelectorAll(".chip").forEach(c =>
+  c.addEventListener("click", () => { eingabe.value = c.dataset.text; formular.requestSubmit(); })
+);
 
-document.querySelectorAll(".chip").forEach((chip) => {
-  chip.addEventListener("click", () => nachrichtSenden(chip.dataset.text));
-});
-
-// ---------- Status ----------
-async function statusPruefen() {
-  try {
-    const r = await fetch("/status");
-    if (abgelaufen(r)) return;
-    const d = await r.json();
-    punkt.className = "punkt " + (d.ok ? "ok" : "fehler");
-    statustext.textContent = d.ok ? "Ollama verbunden" : "Ollama nicht erreichbar";
-  } catch {
-    punkt.className = "punkt fehler";
-    statustext.textContent = "Server nicht erreichbar";
-  }
-}
-
-statusPruefen();
-setInterval(statusPruefen, 30000);
-chatsLaden();
+// ---------- Start ----------
+if (sessionStorage.getItem("eingeloggt") === "1") starten();
 </script>
 </body>
 </html>
